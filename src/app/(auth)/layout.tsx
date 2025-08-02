@@ -17,15 +17,17 @@ export default function LoginLayout({
       <div className="flex flex-col grow min-h-screen lg:min-h-0">
         <CustomNavbar />
         <div className="flex justify-center items-center grow px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
-          <div className="w-full max-w-md sm:max-w-lg">
-            {children}
-          </div>
+          <div className="w-full max-w-md sm:max-w-lg">{children}</div>
         </div>
       </div>
       <div className="hidden lg:block lg:w-[600px]">
         <HeroImage
           as={Image}
-          src={pathname === "/login" ? LoginImage : RegisterImage}
+          src={
+            ["/login", "/login/OPT"].includes(pathname)
+              ? LoginImage
+              : RegisterImage
+          }
           className="h-screen"
           radius="none"
         />
