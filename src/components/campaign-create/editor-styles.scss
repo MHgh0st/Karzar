@@ -1,0 +1,11 @@
+/* editor-styles.scss */
+
+p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #71717a; /* معادل text-gray-400 */
+  float: left;
+  height: 0;
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+}
