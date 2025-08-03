@@ -30,25 +30,32 @@ export default function Header() {
             درباره کارزار
           </Button>
           <Link href="/campaigns/create">
-          <Button
-            color="primary"
-            className="w-full sm:w-auto"
-            startContent={
-              <Icon icon="solar:user-speak-bold-duotone" className="text-lg sm:text-xl" />
-            }
-          >
-            ایجاد کارزار
-          </Button></Link>
+            <Button
+              color="primary"
+              className="w-full sm:w-auto"
+              startContent={
+                <Icon
+                  icon="solar:user-speak-bold-duotone"
+                  className="text-lg sm:text-xl"
+                />
+              }
+            >
+              ایجاد کارزار
+            </Button>
+          </Link>
         </div>
         <div className="mt-8 px-4">
           <Input
             size="lg"
             placeholder="موضوع کارزار یا کد آن را وارد کنید"
             startContent={
-              <Icon icon="solar:magnifer-bold-duotone" className="text-xl sm:text-2xl" />
+              <Icon
+                icon="solar:magnifer-bold-duotone"
+                className="text-xl sm:text-2xl"
+              />
             }
             endContent={
-              <Button color="primary" variant="light" size="lg" radius="lg" >
+              <Button color="primary" variant="light" size="lg" radius="lg">
                 جستجو
               </Button>
             }
@@ -60,17 +67,15 @@ export default function Header() {
           <Input
             size="sm"
             placeholder="موضوع کارزار یا کد آن را وارد کنید"
-            startContent={
-              <Icon icon="solar:magnifer-bold-duotone"   />
-            }
+            startContent={<Icon icon="solar:magnifer-bold-duotone" />}
             fullWidth
             className="sm:hidden"
           />
-          <Button 
-            color="primary" 
-            variant="light" 
-            size="sm" 
-            radius="sm" 
+          <Button
+            color="primary"
+            variant="light"
+            size="sm"
+            radius="sm"
             className="w-full mt-2 sm:hidden"
           >
             جستجو
@@ -79,10 +84,12 @@ export default function Header() {
         <div className="h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-xl mt-4 mx-4">
           <HeroImage
             as={Image}
+            // @ts-ignore
             src={HeaderImage}
             alt="Collaboration Image"
             classNames={{
-              img: "object-cover object-top w-full h-full",
+              img: "w-full object-cover", // اضافه شدن object-cover مهمه
+              wrapper: "w-full h-full", // اطمینان از اینکه wrapper هم عرض و ارتفاع رو پر کنه
             }}
           />
         </div>

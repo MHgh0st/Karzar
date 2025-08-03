@@ -23,6 +23,7 @@ export default function LoginLayout({
       <div className="hidden lg:block lg:w-[600px]">
         <HeroImage
           as={Image}
+          // @ts-ignore
           src={
             ["/login", "/login/OPT"].includes(pathname)
               ? LoginImage
