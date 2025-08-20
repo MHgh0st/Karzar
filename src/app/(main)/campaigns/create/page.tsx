@@ -1,10 +1,16 @@
-import CreateCampaignForm from "@/views/CreateCampaignForm";
+"use client";
+import CreateCampaignForm, {
+  CreateCampaignFormInputs,
+} from "@/views/campaigns/CreateCampaignForm";
 
 export default function Page() {
-  return (
-    <div className="max-w-[1280px] mx-auto mt-8 px-4 md:px-0">
-      <p className="font-bold text-3xl">ساخت کارزار جدید:</p>
-      <CreateCampaignForm classname="mt-8" />
-    </div>
-  );
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  const handleSubmit = async (data: CreateCampaignFormInputs) => {
+    console.log("form submitted in page.tsx: ", data);
+    await sleep(2000);
+  };
+
+  return <CreateCampaignForm onSubmit={handleSubmit} />;
 }

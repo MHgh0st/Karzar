@@ -18,25 +18,36 @@ import {
 import { Icon } from "@iconify/react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
+import UserDropdown from "./UserDropdown";
 import { useState } from "react";
+
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function CustomNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   return (
     <>
-      <Navbar maxWidth="full" className="items-center text-lg" onMenuOpenChange={setIsMenuOpen}>
-        <NavbarContent>
+      <Navbar
+        maxWidth="full"
+        className="items-center text-lg"
+        onMenuOpenChange={setIsMenuOpen}
+      >
+        <NavbarContent className="grow-0">
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             className="sm:hidden"
           />
-          <NavbarBrand>
+          <NavbarBrand className="grow-0">
             <Logo />
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className="hidden sm:flex gap-x-4 md:gap-x-8" justify="center">
+        <NavbarContent
+          className="hidden sm:flex gap-x-4 md:gap-x-8 grow"
+          justify="center"
+        >
           <Dropdown>
             <NavbarItem>
               <DropdownTrigger>
@@ -86,7 +97,9 @@ export default function CustomNavbar() {
           </Dropdown>
 
           <NavbarItem>
-            <Link href="#" className="text-base md:text-lg">درباره کارزار</Link>
+            <Link href="#" className="text-base md:text-lg">
+              درباره کارزار
+            </Link>
           </NavbarItem>
         </NavbarContent>
 
@@ -99,7 +112,6 @@ export default function CustomNavbar() {
               <Button
                 color="primary"
                 variant="flat"
-              
                 className="hidden md:flex"
                 startContent={
                   <Icon
@@ -112,19 +124,26 @@ export default function CustomNavbar() {
               </Button>
             </NavbarItem>
           </Link>
-          <Link href="/login">
-            <NavbarItem>
-              <Button
-                color="primary"
-                startContent={
-                  <Icon icon="solar:user-bold-duotone" className="text-lg md:text-xl" />
-                }
-              >
-                <span className="hidden md:inline">ورود / ثبت نام</span>
-                <span className="md:hidden">ورود / ثبت نام</span>
-              </Button>
-            </NavbarItem>
-          </Link>
+          {isAuthenticated ? (
+            <UserDropdown />
+          ) : (
+            <Link href="/login">
+              <NavbarItem>
+                <Button
+                  color="primary"
+                  startContent={
+                    <Icon
+                      icon="solar:user-bold-duotone"
+                      className="text-lg md:text-xl"
+                    />
+                  }
+                >
+                  <span className="hidden md:inline">ورود / ثبت نام</span>
+                  <span className="md:hidden">ورود / ثبت نام</span>
+                </Button>
+              </NavbarItem>
+            </Link>
+          )}
         </NavbarContent>
 
         {/* Mobile Menu */}
@@ -175,11 +194,13 @@ export default function CustomNavbar() {
               </DropdownMenu>
             </Dropdown>
           </NavbarMenuItem>
-          
+
           <NavbarMenuItem>
-            <Link href="#" className="text-lg w-full block py-2">درباره کارزار</Link>
+            <Link href="#" className="text-lg w-full block py-2">
+              درباره کارزار
+            </Link>
           </NavbarMenuItem>
-          
+
           <NavbarMenuItem>
             <div className="flex items-center gap-2 py-2">
               <span className="text-lg">تم:</span>
