@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Karzar (WIP) 🗳️
 
-## Getting Started
+**سامانه کمپین‌های جمع‌سپاری و کارزارهای آنلاین — وضعیت: در حال توسعه و هنوز وارد فاز پروداکشن نشده است.**
 
-First, run the development server:
+این پروژه یک وب‌اپلیکیشن با Next.js و TypeScript برای ایجاد و مدیریت کارزارهای اجتماعی/مدنی است؛ شامل صفحات ساخت کمپین، امضا/حمایت، به‌روزرسانی‌ها و پروفایل کاربر. «این مخزن هنوز کامل نیست و آماده استفاده در محیط تولیدی نمی‌باشد.»
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🌐 نسخه آزمایشی: https://karzar-nine.vercel.app
+
+<!-- نیاز به اسکرین‌شات از صفحه خانه، صفحه کمپین، و فرم ایجاد کمپین -->
+
+## ✨ ویژگی‌ها (در حال توسعه)
+- Next.js App Router با معماری مدرن و SSR/ISR
+- UI با Tailwind CSS و کامپوننت‌های سفارشی
+- مدل داده کمپین/امضا/به‌روزرسانی‌ها (در حال تکمیل)
+- احراز هویت و پروفایل کاربر (WIP)
+- صفحات عمومی کمپین + لیست‌بندی و جست‌وجو (WIP)
+
+> توجه: بسیاری از بخش‌ها در حال توسعه‌اند و API/Schema ممکن است تغییر کند؛ برای محیط تولیدی استفاده نشود.
+
+## 🏗️ ساختار پروژه
+```
+.
+├── public/                 # دارایی‌های استاتیک
+├── src/
+│   ├── app/                # مسیرها، صفحات، API Routes
+│   ├── components/         # اجزای UI قابل استفاده مجدد
+│   ├── views/              # صفحات سطح بالا (Campaign, Home, etc.)
+│   ├── utils/              # توابع کمکی
+│   ├── types/              # تایپ‌ها و اینترفیس‌ها
+│   └── data/               # داده‌های نمونه/ثابت
+├── next.config.ts
+├── tailwind.config.ts
+├── package.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚧 وضعیت پروژه
+- **WIP**: هنوز در فاز MVP و پیش‌نمایش است.
+- برخی صفحات و APIها ناقص‌اند یا Mock شده‌اند.
+- طراحی پایگاه داده و احراز هویت در حال نهایی‌سازی است.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<!-- نیاز به اسکرین‌شات از بنر WIP در UI (در صورت وجود) -->
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧩 نقشه راه
+- [ ] تکمیل مدل داده کمپین‌ها (Campaign, Signature, Update, Category)
+- [ ] احراز هویت (NextAuth یا Auth Provider دیگر)
+- [ ] پنل ساخت/مدیریت کمپین (Dashboard)
+- [ ] سئو و متادیتا برای اشتراک‌گذاری شبکه‌های اجتماعی
+- [ ] جست‌وجو و فیلتر پیشرفته کمپین‌ها
+- [ ] سیستم دیدگاه‌ها و به‌روزرسانی‌های صاحب کمپین
+- [ ] ایمیل/نوتیفیکیشن برای امضاکنندگان
+- [ ] بهینه‌سازی عملکرد و دسترس‌پذیری (A11y)
+- [ ] Dockerfile/Compose برای استقرار
 
-## Learn More
+## ⚙️ نصب و راه‌اندازی (Dev)
 
-To learn more about Next.js, take a look at the following resources:
+### پیش‌نیازها
+- Node.js 18+
+- pnpm
+- (اختیاری) پایگاه داده (PostgreSQL/SQLite) — در حال حاضر صفحات ممکن است از داده Mock استفاده کنند
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### نصب
+```bash
+pnpm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### تنظیم محیط
+یک فایل `.env` بسازید (نمونه):
+```env
+# DATABASE_URL=postgresql://user:pass@localhost:5432/karzar
+# NEXTAUTH_SECRET=...
+```
 
-## Deploy on Vercel
+### اجرای توسعه
+```bash
+pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 معماری منطقی
+- Pages & API Routes در Next.js (App Router)
+- Domain: مدیریت کمپین‌ها، امضاها، و به‌روزرسانی‌ها
+- Data: لایه داده (در حال طراحی) و داده‌های نمونه برای توسعه
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<!-- نیاز به دیاگرام جریان کار کمپین از ایجاد تا امضا -->
+
+## 🔒 ملاحظات امنیتی
+- این پروژه **Production-ready نیست**؛ الزامات امنیتی (Auth, Rate Limiting, Validation) باید قبل از انتشار پیاده‌سازی شود.
+
+## 🤝 مشارکت
+پیشنهادها و Pull Requestها خوش‌آمدند. لطفاً ابتدا یک Issue برای بحث ایجاد کنید.
+
+## 📄 لایسنس
+MIT
+
+## 👨‍💻 سازنده
+- GitHub: https://github.com/MHgh0st
+
+---
+
+> وضعیت: پروژه هنوز کامل نشده و **آماده استفاده در محیط تولیدی نیست**؛ تغییرات شکستن‌دار ممکن است رخ دهد.
